@@ -1,2 +1,5 @@
 bin/
 obj/
+*Secrets.cs
+*.vscode/
+*.DS_Store
