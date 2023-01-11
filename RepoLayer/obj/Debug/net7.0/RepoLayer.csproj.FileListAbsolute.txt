@@ -1,0 +1,12 @@
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/bin/Debug/net7.0/RepoLayer.deps.json
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/bin/Debug/net7.0/RepoLayer.dll
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/bin/Debug/net7.0/RepoLayer.pdb
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.csproj.AssemblyReference.cache
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.AssemblyInfoInputs.cache
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.AssemblyInfo.cs
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.csproj.CoreCompileInputs.cache
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.dll
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/refint/RepoLayer.dll
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/RepoLayer.pdb
+/Users/asoudry/Desktop/Hehl_Api/RepoLayer/obj/Debug/net7.0/ref/RepoLayer.dll

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Hehl_Api.props" />
+</Project>

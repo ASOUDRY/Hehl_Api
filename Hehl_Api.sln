@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoLayer", "RepoLayer\RepoLayer.csproj", "{9E21F457-C0D7-4A04-AC2A-C3A3B89CBEC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsLayer", "ModelsLayer\ModelsLayer.csproj", "{452E492F-426D-47F5-9FCD-82A1F48D3EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hehl_Api", "HehlApi\Hehl_Api.csproj", "{A7E9896F-4059-456A-8690-51362E4357E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E21F457-C0D7-4A04-AC2A-C3A3B89CBEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E21F457-C0D7-4A04-AC2A-C3A3B89CBEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E21F457-C0D7-4A04-AC2A-C3A3B89CBEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E21F457-C0D7-4A04-AC2A-C3A3B89CBEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452E492F-426D-47F5-9FCD-82A1F48D3EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452E492F-426D-47F5-9FCD-82A1F48D3EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452E492F-426D-47F5-9FCD-82A1F48D3EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452E492F-426D-47F5-9FCD-82A1F48D3EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7E9896F-4059-456A-8690-51362E4357E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7E9896F-4059-456A-8690-51362E4357E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7E9896F-4059-456A-8690-51362E4357E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E9896F-4059-456A-8690-51362E4357E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
