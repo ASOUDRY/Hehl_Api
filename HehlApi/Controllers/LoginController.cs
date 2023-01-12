@@ -9,7 +9,7 @@ using RepoLayer;
 namespace HehlApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{name}/{password}")]
     public class LoginController : ControllerBase
     {
         Login v1 = new Login();
@@ -20,13 +20,17 @@ namespace HehlApi.Controllers
     }
 
     [HttpGet(Name = "Login")]
-          public async Task<ActionResult<User>> Get()
+          public async Task<ActionResult<List<User>>> Get(string name, string password)
          {
+            User bit = new User{
+                name = name,
+                password = password
+            };
             if (!ModelState.IsValid) {
-             UnprocessableEntity(User);
+             UnprocessableEntity(bit);
             }
             else {
-               User ret = await v1.LoginUser();
+               List<User> ret = await v1.LoginUser(bit);
                return new JsonResult(ret);
             }
             return BadRequest();
