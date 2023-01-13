@@ -6,6 +6,7 @@ namespace RepoLayer
     public class Registration
     {
          public async Task<User> RegisterUser(User user) {
+            
             List<string> verification = new List<string>();
             await Task.Delay(1000);
            SqlConnection connection = new SqlConnection ($"{Secrets.connection_string}");
@@ -33,10 +34,13 @@ namespace RepoLayer
                    connection.Close();
                 }
 
+        
     
         if (verification.Count == 0) {
+            
     try
         {
+          
             connection.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO UserRegistrar (Id, Username, Passcode) VALUES (@Id, @Username, @Passcode)", connection);
             cmd.Parameters.AddWithValue("@Id", user.id);

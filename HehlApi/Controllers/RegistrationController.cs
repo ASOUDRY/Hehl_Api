@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RepoLayer;
 using ModelsLayer;
@@ -18,6 +19,13 @@ namespace HehlApi.Controllers
     [HttpPost(Name = "Registration")]
           public async Task<ActionResult<User>> Post(User user)
          {
+
+            PasswordHasher<User> v = new PasswordHasher<User>();
+            user.password = v.HashPassword(user, user.password);
+            
+
+
+            
             if (!ModelState.IsValid) {
              UnprocessableEntity(user);
             }
