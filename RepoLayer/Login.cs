@@ -1,4 +1,3 @@
-
 using Microsoft.Data.SqlClient;
 using ModelsLayer;
 
@@ -6,15 +5,16 @@ namespace RepoLayer
 {
    public class Login
     {
+    SqlConnection connection = new SqlConnection ($"{Secrets.connection_string}");
          public async Task<List<User>> LoginUser(User user) {
             await Task.Delay(1000);
-           SqlConnection connection = new SqlConnection ($"{Secrets.connection_string}");
 
-List<User> PassReference = new List<User>();
+        List<User> PassReference = new List<User>();
              try
                 {
-                    connection.Open();       
-                     SqlCommand command = new SqlCommand($"SELECT * FROM UserRegistrar WHERE Username = '{user.name}' AND Passcode = '{user.password}';", connection);
+                    connection.Open();
+                       SqlCommand command = new SqlCommand($"SELECT * FROM UserRegistrar WHERE Username = '{user.name}';", connection);       
+                   //  SqlCommand command = new SqlCommand($"SELECT * FROM UserRegistrar WHERE Username = '{user.name}' AND Passcode = '{user.password}';", connection);
                     SqlDataReader reader = command.ExecuteReader();
                     if(reader.HasRows)
                     {
@@ -27,7 +27,8 @@ List<User> PassReference = new List<User>();
                     User response = new User {
                         id = Guid.Parse(id),
                         password = password,
-                        name = username            
+                        name = username,
+                        checkHashed = user.checkHashed           
                     };  
                     PassReference.Add(response);
                     }
@@ -42,5 +43,31 @@ List<User> PassReference = new List<User>();
 
             return PassReference;
     }
+
+      public async Task<string> RetreivePassword(User user) {
+        List<string> v = new List<string>();
+         await Task.Delay(1000);
+            try
+                {
+                    connection.Open();       
+                     SqlCommand command = new SqlCommand($"SELECT Passcode FROM UserRegistrar WHERE Username = '{user.name}';", connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if(reader.HasRows)
+                    {
+                    while(reader.Read()) 
+                        {
+                          string password = (string) reader["Passcode"];
+                    v.Add(password);
+                    }
+                    }
+                }
+                    catch(SqlException){
+                    throw;
+                }
+                    finally{
+                   connection.Close();
+                }
+                return v[0];
+      }
 }
 }
