@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace ModelsLayer
 {
     public class Witch : Player
     {
-        
+        public List<string> spellcasting = new List<string>();
+
+        public string superspell {get; set;} = "";
+
+        public string monstertype  {get; set;} = "";
     }
 }
