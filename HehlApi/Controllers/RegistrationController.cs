@@ -1,36 +1,27 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RepoLayer;
+using BusinessLayer;
 using ModelsLayer;
-
 namespace HehlApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class RegistrationController : ControllerBase
     {
-        Registration v1 = new Registration();
+        ConnectingClass businesLogic  = new ConnectingClass();
+     
         private readonly ILogger<RegistrationController> _logger;
         public RegistrationController(ILogger<RegistrationController> logger)
         {
             _logger = logger;
         }
 
-    [HttpPost(Name = "Registration")]
-          public async Task<ActionResult<User>> Post(User user)
-         {
-
-            PasswordHasher<User> v = new PasswordHasher<User>();
-            user.password = v.HashPassword(user, user.password);
-            
-
-
-            
+        [HttpPost(Name = "Registration")]
+        public async Task<ActionResult<UserApiResponse>> Post(User user){
             if (!ModelState.IsValid) {
-             UnprocessableEntity(user);
+                UnprocessableEntity(user);
             }
             else {
-               User ret = await v1.RegisterUser(user);
+               UserApiResponse ret = await businesLogic.RegisterUser(user);
                return new JsonResult(ret);
             }
             return BadRequest();
