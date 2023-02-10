@@ -1,5 +1,5 @@
 using ModelsLayer;
-using RepoLayer;
+using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HehlApi.Controllers
@@ -8,27 +8,23 @@ namespace HehlApi.Controllers
     [Route("[controller]/{key}")]
     public class LocationController : ControllerBase
     {
-        LocationRetreival v1 = new LocationRetreival();
+        ConnectingClass businesLogic = new ConnectingClass();
+        private readonly ILogger<LocationController> _logger;
+        public LocationController(ILogger<LocationController> logger)
+        {
+            _logger = logger;
+        }
 
-          private readonly ILogger<LocationController> _logger;
-    public LocationController(ILogger<LocationController> logger)
-    {
-        _logger = logger;
-    }
-
-         [HttpGet(Name = "Location")]
-          public async Task<ActionResult<List<Location>>> Get(string key)
-         {    
-
+        [HttpGet(Name = "Location")]
+        public async Task<ActionResult<List<Location>>> Get(string key){    
             if (!ModelState.IsValid) {
-             UnprocessableEntity();
+                UnprocessableEntity();
             }
             else {
-               List<Location> ret = await v1.FetchLocation(key);
-               return new JsonResult(ret);        
-        }
+                List<Location> ret = await businesLogic.FetchLocation(key);
+                return new JsonResult(ret);        
+            }
             return BadRequest();
-        }
-        
+        }  
     }
 }
