@@ -12,6 +12,8 @@ public class ConnectingClass
         BusinessLogic b1 = new BusinessLogic();
         RetreivePassword r1 = new RetreivePassword();
 
+        QuestRetreival q1 = new QuestRetreival();
+
         public async Task<Character> GetCharacter(string user, string password) 
         {
                 ApiPayload ret = await player.getCharacter(user, password);
@@ -21,6 +23,12 @@ public class ConnectingClass
         public async Task<List<Monster>> GetMonster(string key) 
         {
                 List<Monster> ret = await monster.FetchMonster(key);
+                return ret;
+        }
+
+          public async Task<Quest> GetQuest(string questGiver, string location) 
+        {
+                Quest ret = await q1.FetchQuest(questGiver, location);
                 return ret;
         }
         public async Task<List<Location>> FetchLocation(string key) 
