@@ -12,7 +12,7 @@ namespace RepoLayer {
             List<ApiPayload> WitchReference = new List<ApiPayload>();
             try {
                     connection.Open();
-                    SqlCommand command = new SqlCommand($"SELECT DISTINCT playerUsername, playerCharacterName, CharacterClass, {knightskill}, attack, defense, hitpoints, SUM(hpBoost) as total_hitpoints, SUM(money) as total_money, SUM(attackBoost) as total_attack, SUM(defenseBoost) as total_defense,STUFF((SELECT ', ' + itemName FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS item_names, STUFF((SELECT ', ' + itemDescription FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS item_descriptions,STUFF((SELECT ', ' + CAST(quantity AS VARCHAR(10)) FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS quantity, STUFF((SELECT ', ' + CAST(magical AS VARCHAR(10)) FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS magical FROM Player INNER JOIN Inventory ON playerUsername = Inventory.itemOwner INNER JOIN UserRegistrar on playerUsername = UserRegistrar.Username INNER JOIN {Knight} on {knightPlayer} = playerCharacterName WHERE playerUsername = '{userInput}' GROUP BY playerUsername, playerCharacterName, UserRegistrar.CharacterClass, {knightskill}, hitpoints, attack, defense;",connection);       
+                    SqlCommand command = new SqlCommand($"SELECT DISTINCT Quest, playerUsername, playerCharacterName, CharacterClass, {knightskill}, attack, defense, hitpoints, SUM(hpBoost) as total_hitpoints, SUM(money) as total_money, SUM(attackBoost) as total_attack, SUM(defenseBoost) as total_defense,STUFF((SELECT ', ' + itemName FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS item_names, STUFF((SELECT ', ' + itemDescription FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS item_descriptions,STUFF((SELECT ', ' + CAST(quantity AS VARCHAR(10)) FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS quantity, STUFF((SELECT ', ' + CAST(magical AS VARCHAR(10)) FROM Inventory WHERE playerUsername = itemOwner FOR XML PATH (''), TYPE).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS magical FROM Player INNER JOIN Inventory ON playerUsername = Inventory.itemOwner INNER JOIN UserRegistrar on playerUsername = UserRegistrar.Username INNER JOIN {Knight} on {knightPlayer} = playerCharacterName WHERE playerUsername = '{userInput}' GROUP BY Quest, playerUsername, playerCharacterName, UserRegistrar.CharacterClass, {knightskill}, hitpoints, attack, defense;",connection);       
                     SqlDataReader reader = await command.ExecuteReaderAsync();
                     if(reader.HasRows) {
                         while(reader.Read()) {
@@ -30,6 +30,7 @@ namespace RepoLayer {
                             string itemD = (string) reader ["item_descriptions"];
                             string quantity = (string) reader ["quantity"];
                             string magical = (string) reader ["magical"];
+                            string quest = (string) reader ["quest"];
                         
                             ApiPayload response = new ApiPayload {
                                 username = username,
@@ -46,7 +47,8 @@ namespace RepoLayer {
                                 itemN = itemN,
                                 itemD = itemD,
                                 quantity = quantity,
-                                magical = magical
+                                magical = magical,
+                                quest = quest
                             };  
                             WitchReference.Add(response);
                         }
