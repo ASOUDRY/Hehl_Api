@@ -15,12 +15,12 @@ namespace HehlApi.Controllers
         }
 
         [HttpGet(Name = "Adventure")]
-        public async Task<ActionResult<List<Monster>>> Get(string key){    
+        public async Task<ActionResult<Adventure>> Get(string key){    
                 if (!ModelState.IsValid) {
                     UnprocessableEntity();
                 }
                 else {
-                    List<Monster> ret = await businesslogic.GetMonster(key);
+                    Adventure ret = await businesslogic.GetAdventure(key);
                     return new JsonResult(ret);        
                 }
             return BadRequest();
