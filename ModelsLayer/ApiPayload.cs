@@ -5,5 +5,6 @@ namespace ModelsLayer {
         public    string itemD {get; set;} = "";
         public    string quantity {get; set;} = "";
         public    string magical{get; set;} = "";
+        public  string quest {get; set;} = "";
     }
 }
