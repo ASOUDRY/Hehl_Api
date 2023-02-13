@@ -16,6 +16,7 @@ namespace BusinessLayer
           ttdef = payload.ttdef,
           ttlhit = payload.ttlhit,
           hitpoints = payload.hitpoints,
+          quest = payload.quest,
           Inventory = new List<Item>()
         };
 

@@ -5,7 +5,7 @@ namespace BusinessLayer;
 public class ConnectingClass
 {
         PlayerRetreival player = new PlayerRetreival();
-        MonsterRetreival monster = new MonsterRetreival();
+        AdventureRetreival adventure = new AdventureRetreival();
         LocationRetreival location = new LocationRetreival();
         Login login = new Login();
         Registration registration = new Registration();
@@ -20,9 +20,9 @@ public class ConnectingClass
                 Character finalProduct = b1.PayloadProcessing(ret);
                 return finalProduct;
         }  
-        public async Task<List<Monster>> GetMonster(string key) 
+        public async Task<Adventure> GetAdventure(string key) 
         {
-                List<Monster> ret = await monster.FetchMonster(key);
+                Adventure ret = await adventure.FetchAdventure(key);
                 return ret;
         }
 
